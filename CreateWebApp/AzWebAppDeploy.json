@@ -1,0 +1,43 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "AppPlanFree",
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2020-12-01",
+            "location": "Central India",
+            "sku": {
+                "name": "F1",
+                "capacity": 1
+            },
+            "tags": {
+                "displayName": "AppPlanFree"
+            },
+            "properties": {
+                "name": "AppPlanFree"
+            }
+        },
+        {
+            "name": "AppTest3000",
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2020-12-01",
+            "location": "Central India",
+            "tags": {
+                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/AppPlanFree')]": "Resource",
+                "displayName": "AppTest3000"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', 'AppPlanFree')]"
+            ],
+            "properties": {
+                "name": "AppTest3000",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'AppPlanFree')]"
+            }
+        }
+    ],
+    "outputs": {}
+}
