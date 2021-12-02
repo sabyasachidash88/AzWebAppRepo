@@ -13,13 +13,13 @@ steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'AzWebAppPipeline-conn'
+    azureResourceManagerConnection: 'AzWebAppPipeline-Conn'
     subscriptionId: 'cee6f54c-d091-45df-8df1-39fd16aca8ae'
     action: 'Create Or Update Resource Group'
-    resourceGroupName: 'AzTemp-Pipeline'
+    resourceGroupName: 'AzWebApp-RG'
     location: 'Central India'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/sabyasachidash88/AzWebAppRepo/main/CreateWebApp/AzWebAppDeploy.json?token=AUI3472KFK7I5M5LCPP5SE3BVCTLG'
-    overrideParameters: '-projectName Azure Pipelines'
+    overrideParameters: '-projectName AzWebApp2627'
     deploymentMode: 'Incremental'
     deploymentName: 'DeployPipelineTemplate'
